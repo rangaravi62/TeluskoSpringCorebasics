@@ -2,6 +2,8 @@ package com.spring.vaccineJpaRepo;
 
 import com.spring.vaccineJpaRepo.Service.IVaccineService;
 import com.spring.vaccineJpaRepo.Service.VaccineService;
+import com.spring.vaccineJpaRepo.customfindermethods.ResultView1;
+import com.spring.vaccineJpaRepo.customfindermethods.ResultView2;
 import com.spring.vaccineJpaRepo.model.Vaccine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,6 +29,14 @@ public class VaccineJpaRepoApplication {
 
 //		System.out.println(vaccineService.removeVaccinesByIdsUsingCrud(List.of(6,7)));
 
+//		vaccineService.fetchByVaccineCostLessThan(50000.00).forEach(a-> System.out.println(a.getVaccineCompany()+" -- "+a.getVaccineName()));
+
+//		vaccineService.fetchByVaccineNameInAndVaccineCostBetween(List.of("Covin","Rabi65"),0.00,40000.00).forEach(System.out::println);
+
+
+//		Dynamic projection -------------
+
+		vaccineService.fetchByVaccineCostGreaterThan(10000.00, ResultView2.class).forEach(a -> System.out.println(a.getVaccineName() + " -> "+a.getVaccineCompany()+" -> "+a.getVaccineCost()));
 
 	}
 

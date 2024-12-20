@@ -1,11 +1,14 @@
 package com.spring.vaccineJpaRepo.Service;
 
+import com.spring.vaccineJpaRepo.customfindermethods.ResultView;
+import com.spring.vaccineJpaRepo.customfindermethods.View;
 import com.spring.vaccineJpaRepo.dao.IVaccineRepo;
 import com.spring.vaccineJpaRepo.model.Vaccine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -53,4 +56,20 @@ public class VaccineService implements IVaccineService{
             return "Records deleted for the given ids successfully!";
         }else return "Failed to delete records@";
     }
+
+    @Override
+    public List<ResultView> fetchByVaccineCostLessThan(Double vaccineCost) {
+        return vaccineRepo.findByVaccineCostLessThan(vaccineCost);
+    }
+
+    @Override
+    public List<Vaccine> fetchByVaccineNameInAndVaccineCostBetween(Collection<String> vaccinesNames, Double startRange, Double endRange) {
+        return vaccineRepo.findByVaccineNameInAndVaccineCostBetween(vaccinesNames,startRange,endRange);
+    }
+
+    @Override
+    public <T extends View> List<T> fetchByVaccineCostGreaterThan(Double vaccineCost,Class<T> tClass) {
+        return vaccineRepo.findByVaccineCostGreaterThan(vaccineCost,tClass);
+    }
+
 }
