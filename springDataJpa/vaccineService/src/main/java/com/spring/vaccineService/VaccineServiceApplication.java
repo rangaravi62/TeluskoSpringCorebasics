@@ -28,7 +28,7 @@ public class VaccineServiceApplication {
 
 		System.out.println(vaccineService.removeVaccine(2));
 
-		System.out.println("No of vaccines in db -> "+vaccineService.getvaccineCount());
+//		System.out.println("No of vaccines in db -> "+vaccineService.getvaccineCount());
 
 
 	}
