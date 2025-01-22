@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class SpringDataJpa1Application {
 
@@ -16,6 +19,8 @@ public class SpringDataJpa1Application {
 		IAlienRepo iAlienRepo = context.getBean(IAlienRepo.class);
 		Alien a= iAlienRepo.save(alien);
 		System.out.println(a);
+		List<String> list = new ArrayList<>();
+		list.set()
 
 	}
 
